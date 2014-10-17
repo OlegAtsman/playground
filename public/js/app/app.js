@@ -11,12 +11,8 @@ angular
     ]).config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'assets/views/main.html',
-                controller: 'CatCtrl'
-            })
-            .when('/globalmap', {
-                templateUrl: 'assets/views/globalmap.html',
-                controller: 'GlobalMapCtrl'
+                templateUrl: 'assets/views/map.html',
+                controller: 'MapCtrl'
             })
             .otherwise({
                 redirectTo: '/'
