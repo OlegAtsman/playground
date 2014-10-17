@@ -1,50 +1,70 @@
 /**
  * Created by Aleh_Atsman on 10/16/2014.
  */
-
 'use strict';
 
-angular.module("playground").factory('Maps', ['$resource', function($resource) {
+angular.module("playground").factory('Maps', ['$resource', 'MapsConfig', function($resource, MapsConfig) {
+
     var module = {};
 
-
-    function initialize() {
-        // Try HTML5 geolocation
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                var infowindow = new google.maps.InfoWindow({
-                    map: map,
-                    position: pos,
-                    content: 'Location found using HTML5.'
-                });
-
-                map.setCenter(pos);
-            }, function() {
-                handleNoGeolocation(true);
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleNoGeolocation(false);
-        }
-    }
-
-    function handleNoGeolocation(errorFlag) {
-        if (errorFlag) {
-            var content = 'Error: The Geolocation service failed.';
-        } else {
-            var content = 'Error: Your browser doesn\'t support geolocation.';
-        }
-        var options = {
-            map: map,
-            position: new google.maps.LatLng(60, 105),
-            content: content
+    module.createMap = function() {
+        //set google map options
+        var map_options = {
+            zoom: 14,
+            panControl: false,
+            zoomControl: false,
+            mapTypeControl: false,
+            streetViewControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: false,
+            styles: MapsConfig.getStyle()
         };
-        var infowindow = new google.maps.InfoWindow(options);
-        map.setCenter(options.position);
-    }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+        //google map custom marker icon - .png fallback for IE11
+        var is_internetExplorer11= navigator.userAgent.toLowerCase().indexOf('trident') > -1;
+        var marker_url = ( is_internetExplorer11 ) ? 'assets/img/cd-icon-location.png' : 'assets/img/cd-icon-location.svg';
 
+        //inizialize the map
+        var map = new google.maps.Map(document.getElementById('google-container'), map_options);
+        MapsConfig.setCurrentPosition(map);
+
+        module.addMarker(map.center, map, marker_url);
+
+        //add custom buttons for the zoom-in/zoom-out on the map
+        function CustomZoomControl(controlDiv, map) {
+            //grap the zoom elements from the DOM and insert them in the map
+            var controlUIzoomIn= document.getElementById('cd-zoom-in'),
+                controlUIzoomOut= document.getElementById('cd-zoom-out');
+            controlDiv.appendChild(controlUIzoomIn);
+            controlDiv.appendChild(controlUIzoomOut);
+
+            // Setup the click event listeners and zoom-in or out according to the clicked element
+            google.maps.event.addDomListener(controlUIzoomIn, 'click', function() {
+                map.setZoom(map.getZoom()+1)
+            });
+            google.maps.event.addDomListener(controlUIzoomOut, 'click', function() {
+                map.setZoom(map.getZoom()-1)
+            });
+        }
+
+        var zoomControlDiv = document.createElement('div');
+        var zoomControl = new CustomZoomControl(zoomControlDiv, map);
+
+        //insert the zoom div on the top left of the map
+        map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
+
+        return map;
+    };
+
+    module.addMarker = function(latLng, map, iconUrl) {
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            visible: true,
+            icon: iconUrl
+        });
+    };
+
+    return module;
 
 }]);
