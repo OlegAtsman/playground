@@ -90,6 +90,8 @@ input, textarea {
       width: 20%;
       display: inline-block;
       vertical-align: bottom; }
+    .cd-form .fieldset .select-menu {
+      width: 77%; }
     .cd-form .fieldset .time-inherit {
       width: inherit; }
     .cd-form .fieldset .event-time {
