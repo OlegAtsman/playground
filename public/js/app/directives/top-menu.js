@@ -6,6 +6,7 @@
 angular.module('playground').directive('topMenu', function() {
     return {
         restrict: 'E',
-        templateUrl: 'assets/views/header.html'
+        templateUrl: 'assets/views/top-menu.html',
+        controller: 'TopMenuCtrl'
     };
 });

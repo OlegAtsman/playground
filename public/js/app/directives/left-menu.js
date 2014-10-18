@@ -6,6 +6,7 @@
 angular.module('playground').directive('leftMenu', function() {
     return {
         restrict: 'E',
-        templateUrl: 'assets/views/left-menu.html'
+        templateUrl: 'assets/views/left-menu.html',
+        controller: 'LeftMenuCtrl'
     };
 });
