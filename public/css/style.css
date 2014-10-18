@@ -627,6 +627,9 @@ header {
   line-height: 1.8;
   font-size: 55px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); }
+  #create-event.is-clicked {
+    background-color: red;
+    transform: rotate(45deg);}
   #create-event .plus {
     background: url("../img/plus.svg") no-repeat center center;
     width: 50px;
@@ -635,6 +638,7 @@ header {
     top: 0;
     right: 0px;
     transform: scale(0.5); }
+  #create-event .plus.is-clicked { transform: rotate(45deg); }
     @media only screen and (min-width: 700px) {
       #create-event .plus {
         top: 25px;
