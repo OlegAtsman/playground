@@ -16,12 +16,30 @@
 
 	<main class="cd-main-content">
 		<section id="cd-google-map">
-			<div id="google-container"></div>
+			<div id="google-container" class=""></div><!--class="more-info">-->
 			<div id="cd-zoom-in"></div>
 			<div id="cd-zoom-out"></div>
 			<a href="#"><div id="create-event"><span class="plus"></span></div></a>
 			<address>86-90 Paul Street, London, EC2A 4NE</address> 
 		</section>
+		<div class="more-info-container"> <!--is-visible-->
+			<h2 class="event-message">Guys from Grodno want to play</h2>
+			<h4 class="game-type">Football</h4>
+			<section class="other-info">
+				<span>We came from Grodno on business and we have a free evening to play football</span>
+			</section>
+			<section class="event-time-section">
+				<span>19.10.2014 <time>17:00</time></span>
+				<span>19.10.2014 <time>19:00</time></span>
+			</section>
+			<label>Who will come</label>
+			<ul class="who-will-come">
+				<li><img src="img/user.png" alt=""></li>
+				<li><img src="img/user.png" alt=""></li>
+				<li><img src="img/user.png" alt=""></li>
+				<li><img src="img/user.png" alt=""></li>
+			</ul>
+		</div>
 	</main>
 
 	<nav id="cd-lateral-nav">
@@ -91,7 +109,12 @@
 
 					<p class="fieldset">
 						<span class="title-name">Type</span>
-						<input class="full-width has-padding has-border" id="signup-email" type="text" placeholder="">
+						<select class="select-menu">
+						  <option value="football">Football</option>
+						  <option value="basketball">basketball</option>
+						  <option value="volleyball">volleyball</option>
+						  <option value="other-category">other category</option>
+						</select>
 					</p>
 
 					<p class="fieldset">
@@ -115,9 +138,11 @@
 				</form>
 
 			</div>
-			<a class="cd-close-form">Close</a>
+			<a href="#0" class="cd-close-form">Close</a>
 		</div>
 	</div>
+
+	
 	  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw"></script>
