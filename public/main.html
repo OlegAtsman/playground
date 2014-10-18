@@ -8,6 +8,7 @@
 <body>
 	<header>
 		<a id="cd-menu-trigger"><span class="cd-menu-icon"></span></a>
+		<a class="cursor project-logo">PlayGrounds</a>
 		<div class="logo">
 			<span class="name">Name Surname</span>
 			<img src="img/user.png" alt="">
@@ -16,13 +17,13 @@
 
 	<main class="cd-main-content">
 		<section id="cd-google-map">
-			<div id="google-container" class=""></div><!--class="more-info">-->
+			<div id="google-container" class="more-info"></div><!--class="more-info">-->
 			<div id="cd-zoom-in"></div>
 			<div id="cd-zoom-out"></div>
 			<a class="cursor"><div id="create-event"><span class="plus"></span></div></a>
 			<address>86-90 Paul Street, London, EC2A 4NE</address> 
 		</section>
-		<div class="more-info-container"> <!--is-visible-->
+		<div class="more-info-container is-visible"> <!--is-visible-->
 			<h2 class="event-message">Guys from Grodno want to play</h2>
 			<h4 class="game-type">Football</h4>
 			<section class="other-info">
@@ -124,14 +125,18 @@
 
 					<p class="fieldset">
 						<span class="title-name time-inherit">Start Time:</span>
-						<input type="time" name="usr_time">
-						<input type="date" name="bday">
+						<div>
+							<input type="time" name="usr_time">
+							<input type="date" name="bday">
+						</div>
 					</p>
 
 					<p class="fieldset">
 						<span class="title-name time-inherit">End Time:</span>
-						<input type="time" name="usr_time">
-						<input type="date" name="bday">
+						<div>
+							<input type="time" name="usr_time">
+							<input type="date" name="bday">
+						</div>
 					</p>
 
 					<p class="fieldset create-btn">
@@ -150,5 +155,6 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw"></script>
 	<script src="js/main.js"></script>
 	<script src="js/map.js"></script>
+
 </body>
 </html>

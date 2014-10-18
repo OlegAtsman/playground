@@ -1,4 +1,5 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto");
+@import url("http://fonts.googleapis.com/css?family=Amatic+SC:700");
 input, textarea {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
@@ -299,6 +300,15 @@ header {
   transition-duration: 0.4s; }
   header a {
     cursor: pointer; }
+  header .project-logo {
+    color: #fff;
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    top: 8px; }
   header .logo {
     padding-top: 5px;
     position: absolute;
@@ -312,8 +322,9 @@ header {
     display: none;
     vertical-align: middle;
     color: #fff;
-    margin-right: 10px; }
-    @media only screen and (min-width: 340px) {
+    margin-right: 10px;
+    font-weight: 500; }
+    @media only screen and (min-width: 700px) {
       header .name {
         display: inline-block; } }
   header.lateral-menu-is-open {
@@ -580,13 +591,17 @@ header {
     padding: 1em 1em;
     background-color: rgba(129, 176, 108, 0.8);
     color: #fff;
+    font-weight: 500;
+    font-style: normal;
     font-size: 13px;
     font-size: 0.8125rem; }
     @media only screen and (min-width: 768px) {
       #cd-google-map address {
         font-size: 15px;
         font-size: 0.9375rem;
-        text-align: center; } }
+        text-align: center;
+        font-weight: 500;
+        font-style: normal; } }
 
 #cd-zoom-in, #cd-zoom-out {
   height: 32px;
