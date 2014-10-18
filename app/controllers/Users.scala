@@ -3,7 +3,6 @@ package controllers
 import javax.inject.Inject
 
 import models.User
-import play.api.db.slick.DBAction
 import play.api.libs.json.Json
 import play.api.libs.json.Json._
 import play.api.mvc.{Security, Action, Controller}
