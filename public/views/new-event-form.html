@@ -9,35 +9,39 @@
         <div id="cd-signup is-selected"> <!-- sign up form -->
             <form class="cd-form">
                 <p class="fieldset">
-                    <span class="title-name">Title</span>
-                    <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="">
+                    <span class="title-name">Title:</span>
+                    <input class="full-width has-padding has-border" ng-model="event.title" id="signup-username" type="text" placeholder="">
                 </p>
 
                 <p class="fieldset">
-                    <span class="title-name">Type</span>
-                    <input class="full-width has-padding has-border" id="signup-email" type="text" placeholder="">
+                    <span class="title-name">About:</span>
+                    <input class="full-width has-padding has-border" ng-model="event.description" id="signup-password" type="text"  placeholder="">
                 </p>
 
                 <p class="fieldset">
-                    <span class="title-name">About</span>
-                    <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="">
+                    <span class="title-name">Type:</span>
+                    <select class="select-menu" ng-model="event.eventTypeId">
+                        <option value="0">Football</option>
+                        <option value="1">basketball</option>
+                        <option value="volleyball">volleyball</option>
+                        <option value="other-category">other category</option>
+                    </select>
                 </p>
 
                 <p class="fieldset">
-                    <span class="title-name time-inherit">Start Time</span>
-                    <label class="event-time">00:00</label>
+                    <span class="title-name time-inherit">Start Time:</span>
+                    <input name="bday" ng-model="event.startDate">
                 </p>
 
                 <p class="fieldset">
-                    <span class="title-name time-inherit">End Time</span>
-                    <label class="event-time">00:00</label>
+                    <span class="title-name time-inherit">End Time:</span>
+                    <input name="bday" ng-model="event.endDate">
                 </p>
 
                 <p class="fieldset create-btn">
-                    <input class="full-width has-padding" type="submit" value="Create Event">
+                    <input class="full-width has-padding" ng-click="sendForm()" type="submit" value="Create Event">
                 </p>
             </form>
-
         </div>
         <a class="cd-close-form">Close</a>
     </div>

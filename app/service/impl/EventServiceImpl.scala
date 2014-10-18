@@ -1,5 +1,7 @@
 package service.impl
 
+import java.sql.Timestamp
+
 import models.Event
 import play.api.Play.current
 import play.api.db.slick.Config.driver.simple._
@@ -27,8 +29,11 @@ class EventServiceImpl extends EventService with EventQuery {
   }
 
   override def createTest: Unit = DB.withDynTransaction {
+
+    val startDate = new java.util.Date()
+
     events ++= Seq(
-      Event(Some(1), "Imaguru", Some("Startup Club"), 1, 53.890664,27.537312)
+      Event(Some(1), "Imaguru", Some("Startup Club"), 1, 53.890664, 27.537312, new Timestamp(startDate.getTime), new Timestamp(startDate.getTime))
     )
   }
 }

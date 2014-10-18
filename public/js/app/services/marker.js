@@ -19,5 +19,12 @@ angular.module("playground").factory('Marker', ['$resource', 'MarkerConfig', fun
             });
         });
     };
+
+    module.postNewMarker = function(marker) {
+        var event = new Marker(marker);
+        event.$save();
+    };
+
+
     return module;
 }]);
