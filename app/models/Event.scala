@@ -11,7 +11,7 @@ case class Event(id: Option[Long], title: String, description: Option[String], e
 class EventTable(tag: Tag) extends Table[Event](tag, "Event") {
 
   def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-  def title = column[String]("login", O.NotNull)
+  def title = column[String]("title", O.NotNull)
   def description = column[String]("description", O.Nullable)
   def eventTypeId = column[Long]("eventTypeId", O.NotNull)
 

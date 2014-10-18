@@ -14,5 +14,10 @@ angular.module('playground').controller('LeftMenuCtrl', ['$scope', function($sco
         });
     };
 
+    $scope.categoryClick = function(event) {
+        var target = event.target;
+        $(target).toggleClass('submenu-open').next('.sub-menu').slideToggle(200).end().parent('.item-has-children').siblings('.item-has-children').children('a').removeClass('submenu-open').next('.sub-menu').slideUp(200);
+    };
+
 
 }]);

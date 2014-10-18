@@ -1,50 +1,10 @@
-<nav id="cd-lateral-nav" data-ng-init="init()">
+<nav id="cd-lateral-nav" ng-controller="LeftMenuList">
     <ul class="cd-navigation">
-
-        <li class="item-has-children">
-            <a>Services</a>
+        <li class="item-has-children" ng-repeat="menu in menuList">
+            <a ng-click="categoryClick($event)">{{menu.categoryName}}</a>
             <ul class="sub-menu">
-                <li><a>Brand</a></li>
-                <li><a>Web Apps</a></li>
-                <li><a>Mobile Apps</a></li>
+                <li ng-repeat="subcategory in menu.subcategories"><a>{{subcategory}}</a></li>
             </ul>
         </li>
-
-        <li class="item-has-children">
-            <a>Products</a>
-            <ul class="sub-menu">
-                <li><a>Product 1</a></li>
-                <li><a>Product 2</a></li>
-                <li><a>Product 3</a></li>
-                <li><a>Product 4</a></li>
-                <li><a>Product 5</a></li>
-            </ul>
-        </li>
-
-        <li class="item-has-children">
-            <a >Stockists</a>
-            <ul class="sub-menu">
-                <li><a>London</a></li>
-                <li><a>New York</a></li>
-                <li><a>Milan</a></li>
-                <li><a>Paris</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="cd-navigation cd-single-item-wrapper">
-        <li><a>Tour</a></li>
-        <li><a>Login</a></li>
-        <li><a>Register</a></li>
-        <li><a>Pricing</a></li>
-        <li><a>Support</a></li>
-    </ul>
-
-    <ul class="cd-navigation cd-single-item-wrapper">
-        <li><a class="current" >Journal</a></li>
-        <li><a>FAQ</a></li>
-        <li><a>Terms &amp; Conditions</a></li>
-        <li><a>Careers</a></li>
-        <li><a>Students</a></li>
     </ul>
 </nav>
