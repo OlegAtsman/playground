@@ -20,9 +20,9 @@
 
                 <p class="fieldset">
                     <span class="title-name">Type:</span>
-                    <select class="select-menu" ng-model="event.category">
-                        <option value="football">Football</option>
-                        <option value="basketball">basketball</option>
+                    <select class="select-menu" ng-model="event.eventTypeId">
+                        <option value="0">Football</option>
+                        <option value="1">basketball</option>
                         <option value="volleyball">volleyball</option>
                         <option value="other-category">other category</option>
                     </select>
@@ -30,14 +30,12 @@
 
                 <p class="fieldset">
                     <span class="title-name time-inherit">Start Time:</span>
-                    <input type="time" name="usr_time" ng-model="event.beginTime">
-                    <input type="date" name="bday" ng-model="event.beginDate">
+                    <input name="bday" ng-model="event.startDate">
                 </p>
 
                 <p class="fieldset">
                     <span class="title-name time-inherit">End Time:</span>
-                    <input type="time" name="usr_time" ng-model="event.endTime">
-                    <input type="date" name="bday" ng-model="event.endDate">
+                    <input name="bday" ng-model="event.endDate">
                 </p>
 
                 <p class="fieldset create-btn">

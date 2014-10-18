@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', function($scope, Maps) {
+angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Marker', function($scope, Maps, Marker) {
 
     $scope.formClass = '';
     $scope.event = {};
@@ -13,7 +13,7 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', funct
 
         google.maps.event.addListener(map, "click", function(event) {
             $scope.event.lat = event.latLng.lat();
-            $scope.event.lng = event.latLng.lng();
+            $scope.event.lon = event.latLng.lng();
             // populate yor box/field with lat, lng
             $scope.formClass = 'is-visible';
             console.log("Lat=" + $scope.event.lat + "; Lng=" + $scope.event.lng);
@@ -29,5 +29,7 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', funct
 
     $scope.sendForm = function() {
         console.log($scope.event);
+        $scope.event.eventTypeId = parseInt($scope.event.eventTypeId);
+        Marker.postNewMarker($scope.event);
     };
 }]);
