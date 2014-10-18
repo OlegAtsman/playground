@@ -10,31 +10,20 @@ angular.module("playground").factory('MapsConfig', ['$resource', function($resou
 
     };
 
-    module.setCurrentPosition = function(map) {
-
+    module.withCurrentPosition = function(callback) {
         var defaultPosition = new google.maps.LatLng(53.890664,27.537312);
-
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 defaultPosition =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                map.setCenter(defaultPosition);
-                var marker = new google.maps.Marker({
-                    position: defaultPosition,
-                    map: map,
-                    visible: true,
-                    icon: iconUrl
-                });
+                callback(defaultPosition);
             }, function(err) {
                 console.log(err);
-                map.setCenter(defaultPosition);
+                callback(defaultPosition);
             });
-
         } else {
             console.log("Browser doesn't support Geolocation");
-            map.setCenter(defaultPosition);
+            callback(defaultPosition);
         }
-
-
     };
 
     module.getStyle = function() {

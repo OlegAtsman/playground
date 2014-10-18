@@ -7,10 +7,11 @@ angular.module("playground").factory('Maps', ['$resource', 'MapsConfig', functio
 
     var module = {};
 
-    module.createMap = function() {
+    module.createMap = function() {MapsConfig.withCurrentPosition(function(currentPosition) {
         //set google map options
         var map_options = {
             zoom: 14,
+            center: currentPosition,
             panControl: false,
             zoomControl: false,
             mapTypeControl: false,
@@ -26,7 +27,12 @@ angular.module("playground").factory('Maps', ['$resource', 'MapsConfig', functio
 
         //inizialize the map
         var map = new google.maps.Map(document.getElementById('google-container'), map_options);
-        MapsConfig.setCurrentPosition(map);
+        var marker = new google.maps.Marker({
+            position: map.center,
+            map: map,
+            visible: true,
+            icon: marker_url
+        });
 
         module.addMarker(map.center, map, marker_url);
 
@@ -54,7 +60,7 @@ angular.module("playground").factory('Maps', ['$resource', 'MapsConfig', functio
         map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
 
         return map;
-    };
+    })};
 
     module.addMarker = function(latLng, map, iconUrl) {
         var marker = new google.maps.Marker({

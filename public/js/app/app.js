@@ -14,6 +14,10 @@ angular
                 templateUrl: 'assets/views/map.html',
                 controller: 'MapCtrl'
             })
+            .when('/home', {
+                templateUrl: 'assets/views/homeTmpl.html',
+                controller: 'MapCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
