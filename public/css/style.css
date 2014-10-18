@@ -40,7 +40,6 @@ input, textarea {
   background: #FFF;
   margin: 3em auto 4em;
   cursor: auto;
-  border-radius: 0.25em;
   -webkit-transform: translateY(-30px);
   -moz-transform: translateY(-30px);
   -ms-transform: translateY(-30px);
@@ -60,16 +59,21 @@ input, textarea {
       display: table;
       clear: both; }
     .cd-user-modal-container .cd-switcher .angle-wrap {
-      height: 50px;
-      width: 47px; }
+      padding: 0;
+      display: block;
+      padding: 0; }
     .cd-user-modal-container .cd-switcher .angle {
-      background: url("../assets/img/angle.svg") no-repeat center center;
-      width: 47px;
-      height: 49px;
-      position: absolute; }
+      background: url("../img/angle.svg") no-repeat center center;
+      width: 50px;
+      height: 60px;
+      position: absolute;
+      background-size: 95px;
+      top: -6px;
+      left: -1px; }
     .cd-user-modal-container .cd-switcher li {
       font-weight: bold;
-      display: inline-block; }
+      padding: 20px 20px 0px 20px;
+      text-align: center; }
   @media only screen and (min-width: 320px) {
     .cd-user-modal-container {
       margin: 4em auto; }
@@ -86,6 +90,10 @@ input, textarea {
       width: 20%;
       display: inline-block;
       vertical-align: bottom; }
+    .cd-form .fieldset .time-inherit {
+      width: inherit; }
+    .cd-form .fieldset .event-time {
+      margin-left: 20px; }
     .cd-form .fieldset:first-child {
       margin-top: 0; }
     .cd-form .fieldset:last-child {
@@ -140,7 +148,7 @@ input, textarea {
     .cd-form input[type=submit] {
       padding: 16px 0;
       cursor: pointer;
-      background: #242e30;
+      background: #4e6361;
       color: #FFF;
       border: none;
       -webkit-appearance: none;
@@ -273,8 +281,9 @@ header {
   left: 0;
   height: 50px;
   width: 100%;
-  background: #4e6361;
+  background: #81b06c;
   z-index: 3;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5);
   /* Force Hardware Acceleration in WebKit */
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
@@ -296,9 +305,13 @@ header {
     display: inline-block;
     vertical-align: middle; }
   header .name {
-    display: inline-block;
+    display: none;
     vertical-align: middle;
-    color: #fff; }
+    color: #fff;
+    margin-right: 10px; }
+    @media only screen and (min-width: 340px) {
+      header .name {
+        display: inline-block; } }
   header.lateral-menu-is-open {
     /* translate to show the lateral menu */
     -webkit-transform: translateX(260px);
@@ -546,16 +559,7 @@ header {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #f5f4e9;
-    /*
-    @include MQ(M) {
-    	height: 300px;
-    }
-
-    @include MQ(L) {
-    	height: 600px;
-    }
-    */ }
+  background-color: #f5f4e9; }
 
 #cd-google-map {
   position: relative;
@@ -566,8 +570,8 @@ header {
     bottom: 0;
     left: 0;
     padding: 1em 1em;
-    background-color: rgba(36, 46, 48, 0.9);
-    color: #aab5b7;
+    background-color: rgba(129, 176, 108, 0.8);
+    color: #fff;
     font-size: 13px;
     font-size: 0.8125rem; }
     @media only screen and (min-width: 768px) {
@@ -603,9 +607,9 @@ header {
   background-position: 50% -32px; }
 
 #create-event {
-  width: 100px;
-  height: 100px;
-  background-color: #4e6361;
+  width: 50px;
+  height: 50px;
+  background-color: #81b06c;
   position: absolute;
   bottom: 70px;
   right: 20px;
@@ -613,11 +617,22 @@ header {
   text-align: center;
   color: #fff;
   line-height: 1.8;
-  font-size: 55px; }
+  font-size: 55px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); }
   #create-event .plus {
     background: url("../img/plus.svg") no-repeat center center;
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 25px;
-    right: 25px; }
+    top: 0;
+    right: 0px;
+    transform: scale(0.5); }
+    @media only screen and (min-width: 700px) {
+      #create-event .plus {
+        top: 25px;
+        right: 25px;
+        transform: scale(1); } }
+  @media only screen and (min-width: 700px) {
+    #create-event {
+      width: 100px;
+      height: 100px; } }
