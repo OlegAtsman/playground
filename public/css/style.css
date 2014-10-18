@@ -490,7 +490,7 @@ header {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     right: 1em;
-    background: url("../assets/img/cd-arrow.svg") no-repeat center center;
+    background: url("../img/cd-arrow.svg") no-repeat center center;
     background-size: 8px 11px;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
@@ -516,7 +516,7 @@ header {
     width: 32px;
     float: left;
     padding: 0;
-    background-image: url("../assets/img/cd-socials.svg");
+    background-image: url("../img/cd-socials.svg");
     background-repeat: no-repeat;
     background-size: 128px 64px;
     background-color: #FFF;
@@ -584,7 +584,7 @@ header {
   background-color: rgba(36, 46, 48, 0.9);
   background-repeat: no-repeat;
   background-size: 32px 64px;
-  background-image: url("../assets/img/cd-icon-controller.svg"); }
+  background-image: url("../img/cd-icon-controller.svg"); }
   .no-touch #cd-zoom-in:hover, .no-touch #cd-zoom-out:hover {
     background-color: #242e30; }
   @media only screen and (min-width: 768px) {
@@ -615,7 +615,7 @@ header {
   line-height: 1.8;
   font-size: 55px; }
   #create-event .plus {
-    background: url("../assets/img/plus.svg") no-repeat center center;
+    background: url("../img/plus.svg") no-repeat center center;
     width: 50px;
     height: 50px;
     position: absolute;
