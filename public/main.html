@@ -7,18 +7,19 @@
 </head>
 <body>
 	<header>
-		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+		<a id="cd-menu-trigger"><span class="cd-menu-icon"></span></a>
+		<div class="logo">
+			<span class="name">Name Surname</span>
+			<img src="assets/img/user.png" alt="">
+		</div>
 	</header>
 
-    <div ng-view>
-
-    </div>
-    
-	 ng-scope">
+	<main class="cd-main-content">
 		<section id="cd-google-map">
 			<div id="google-container"></div>
 			<div id="cd-zoom-in"></div>
 			<div id="cd-zoom-out"></div>
+			<a href="#"><div id="create-event"><span class="plus"></span></div></a>
 			<address>86-90 Paul Street, London, EC2A 4NE</address> 
 		</section>
 	</main>
@@ -72,6 +73,51 @@
 			<li><a href="#0">Students</a></li>
 		</ul>
 	</nav>
+
+	<div class="cd-user-modal is-visible"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			<ul class="cd-switcher">
+				<li class="angle-wrap"><span class="angle"></span></li>
+				<li>Fill out all the forms for create the event</li>
+				<li></li>
+			</ul>
+
+			<div id="cd-signup is-selected"> <!-- sign up form -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<span class="title-name">Title</span>
+						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="">
+					</p>
+
+					<p class="fieldset">
+						<span class="title-name">Type</span>
+						<input class="full-width has-padding has-border" id="signup-email" type="text" placeholder="">
+					</p>
+
+					<p class="fieldset">
+						<span class="title-name">About</span>
+						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="">
+					</p>
+
+					<p class="fieldset">
+						<span class="title-name">Start Time</span>
+						<label>00:00</label>
+					</p>
+
+					<p class="fieldset">
+						<span class="title-name">End Time</span>
+						<label>00:00</label>
+					</p>
+
+					<p class="fieldset create-btn">
+						<input class="full-width has-padding" type="submit" value="Create Event">
+					</p>
+				</form>
+
+			</div>
+			<a href="#0" class="cd-close-form">Close</a>
+		</div>
+	</div>
 	  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw"></script>
