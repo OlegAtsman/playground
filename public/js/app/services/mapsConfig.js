@@ -3,12 +3,8 @@
  */
 'use strict';
 
-angular.module("playground").factory('MapsConfig', ['$resource', function($resource) {
+angular.module("playground").factory('MapsConfig', [function() {
     var module = {};
-
-    module.getConfig = function() {
-
-    };
 
     module.withCurrentPosition = function(callback) {
         var defaultPosition = new google.maps.LatLng(53.890664,27.537312);

@@ -26,7 +26,6 @@ class Events @Inject()(eventService: EventService, eventTypeService: EventTypeSe
 
   def list = Action {
     val es = eventService.list
-
     es match {
       case Success(list) => Ok(toJson(list))
       case Failure(e) => BadRequest(e.toString)
