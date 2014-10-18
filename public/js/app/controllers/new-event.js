@@ -20,6 +20,7 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Mark
             $scope.formClass = 'is-visible';
             $scope.clicked = '';
             console.log("Lat=" + $scope.event.lat + "; Lng=" + $scope.event.lng);
+            google.maps.event.clearListeners(map, "click");
         });
         //google.maps.event.clearListeners(map, "click");
     };
@@ -33,6 +34,7 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Mark
     $scope.sendForm = function() {
         console.log($scope.event);
         $scope.event.eventTypeId = parseInt($scope.event.eventTypeId);
-        Marker.postNewMarker($scope.event);
+        Marker.postNewMarker($scope.event, Maps.map);
+        $scope.formClass='';
     };
 }]);

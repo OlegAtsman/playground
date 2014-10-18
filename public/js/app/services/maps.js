@@ -64,6 +64,10 @@ angular.module("playground").factory('Maps', ['MapsConfig', 'MarkerConfig', func
         return map;
     })};
 
+    module.clean = function() {
+
+    };
+
     return module;
 
 }]);

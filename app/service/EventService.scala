@@ -13,6 +13,8 @@ trait EventService {
 
   def list: Try[List[Event]]
 
+  def filterByType(id: Long): Try[List[Event]]
+
   def createTest
 
 }
