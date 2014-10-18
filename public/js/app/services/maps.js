@@ -3,15 +3,14 @@
  */
 'use strict';
 
-angular.module("playground").factory('Maps', ['$resource', 'MapsConfig', function($resource, MapsConfig) {
+angular.module("playground").factory('Maps', ['MapsConfig', 'MarkerConfig', function(MapsConfig, MarkerConfig) {
 
     var module = {};
 
-    module.createMap = function() {MapsConfig.withCurrentPosition(function(currentPosition) {
-        //set google map options
+    module.init = function() {
         var map_options = {
             zoom: 14,
-            center: currentPosition,
+            center: new google.maps.LatLng(53.890664,27.537312),
             panControl: false,
             zoomControl: false,
             mapTypeControl: false,
@@ -20,21 +19,24 @@ angular.module("playground").factory('Maps', ['$resource', 'MapsConfig', functio
             scrollwheel: false,
             styles: MapsConfig.getStyle()
         };
+        module.map = new google.maps.Map(document.getElementById('google-container'), map_options);
+        module.createMap();
+    };
 
-        //google map custom marker icon - .png fallback for IE11
-        var is_internetExplorer11= navigator.userAgent.toLowerCase().indexOf('trident') > -1;
-        var marker_url = ( is_internetExplorer11 ) ? 'assets/img/cd-icon-location.png' : 'assets/img/cd-icon-location.svg';
+    module.createMap = function() {MapsConfig.withCurrentPosition(function(currentPosition) {
 
-        //inizialize the map
-        var map = new google.maps.Map(document.getElementById('google-container'), map_options);
+        var markerIconUrl = MarkerConfig.getIconStyle();
+
+        var map = module.map;
+
+        map.center = currentPosition;
+
         var marker = new google.maps.Marker({
             position: map.center,
             map: map,
             visible: true,
-            icon: marker_url
+            icon: markerIconUrl
         });
-
-        module.addMarker(map.center, map, marker_url);
 
         //add custom buttons for the zoom-in/zoom-out on the map
         function CustomZoomControl(controlDiv, map) {
@@ -61,15 +63,6 @@ angular.module("playground").factory('Maps', ['$resource', 'MapsConfig', functio
 
         return map;
     })};
-
-    module.addMarker = function(latLng, map, iconUrl) {
-        var marker = new google.maps.Marker({
-            position: latLng,
-            map: map,
-            visible: true,
-            icon: iconUrl
-        });
-    };
 
     return module;
 
