@@ -1,13 +1,14 @@
 package controllers
 
+import java.sql.Timestamp
 import javax.inject.Inject
 
-import models.{Event}
-import play.api.libs.json.Json
+import models.{JsonEvent, Event}
+import play.api.libs.json.{JsError, Json}
 import play.api.libs.json.Json._
-import play.api.mvc.{Security, Action, Controller}
-import service.{EventTypeService, EventService, UserService}
-
+import play.api.mvc.{Action, Controller}
+import service.{EventTypeService, EventService}
+import Utils._
 import scala.util.{Failure, Success}
 
 /**
@@ -15,11 +16,11 @@ import scala.util.{Failure, Success}
  */
 class Events @Inject()(eventService: EventService, eventTypeService: EventTypeService) extends Controller{
 
-  implicit val eventFormat = Json.format[Event]
+  implicit val eventFormat = Json.format[JsonEvent]
 
   def createTest = Action {
-    //eventTypeService.createTest
-    //eventService.createTest
+    eventTypeService.createTest
+    eventService.createTest
 
     Ok("Created")
   }
@@ -27,8 +28,21 @@ class Events @Inject()(eventService: EventService, eventTypeService: EventTypeSe
   def list = Action {
     val es = eventService.list
     es match {
-      case Success(list) => Ok(toJson(list))
+      case Success(list) => Ok(toJson(eventListtojsonEventList(list)))
       case Failure(e) => BadRequest(e.toString)
+    }
+  }
+
+  def create = Action(parse.json) { implicit request =>
+    request.body.validate[JsonEvent].map { event =>
+      val maybeId = eventService.save(event)
+      maybeId match {
+        case Success(id) => Ok(toJson(id))
+        case Failure(e) => BadRequest("Can not save event" + e.toString)
+      }
+    }.recoverTotal{
+      e => println(e.toString)
+        BadRequest("Detected error:"+ JsError.toFlatJson(e))
     }
   }
 
