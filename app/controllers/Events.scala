@@ -49,7 +49,7 @@ class Events @Inject()(eventService: EventService, eventTypeService: EventTypeSe
   def filter(id: Long) = Action { implicit request =>
     val eventList = eventService.filterByType(id)
     eventList match {
-      case Success(l) => Ok(toJson(l))
+      case Success(l) => Ok(toJson(eventListtojsonEventList(l)))
       case Failure(e) => BadRequest(e.toString)
     }
   }
