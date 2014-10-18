@@ -19,7 +19,7 @@
 			<div id="google-container" class=""></div><!--class="more-info">-->
 			<div id="cd-zoom-in"></div>
 			<div id="cd-zoom-out"></div>
-			<a href="#"><div id="create-event"><span class="plus"></span></div></a>
+			<a class="cursor"><div id="create-event"><span class="plus"></span></div></a>
 			<address>86-90 Paul Street, London, EC2A 4NE</address> 
 		</section>
 		<div class="more-info-container"> <!--is-visible-->
@@ -45,70 +45,75 @@
 	<nav id="cd-lateral-nav">
 		<ul class="cd-navigation">
 			<li class="item-has-children">
-				<a href="#0">Services</a>
+				<a class="cursor">Services</a>
 				<ul class="sub-menu">
-					<li><a href="#0">Brand</a></li>
-					<li><a href="#0">Web Apps</a></li>
-					<li><a href="#0">Mobile Apps</a></li>
+					<li><a class="cursor">Brand</a></li>
+					<li><a class="cursor">Web Apps</a></li>
+					<li><a class="cursor">Mobile Apps</a></li>
 				</ul>
 			</li>
 
 			<li class="item-has-children">
-				<a href="#0">Products</a>
+				<a class="cursor">Products</a>
 				<ul class="sub-menu">
-					<li><a href="#0">Product 1</a></li>
-					<li><a href="#0">Product 2</a></li>
-					<li><a href="#0">Product 3</a></li>
-					<li><a href="#0">Product 4</a></li>
-					<li><a href="#0">Product 5</a></li>
+					<li><a class="cursor">Product 1</a></li>
+					<li><a class="cursor">Product 2</a></li>
+					<li><a class="cursor">Product 3</a></li>
+					<li><a class="cursor">Product 4</a></li>
+					<li><a class="cursor">Product 5</a></li>
 				</ul>
 			</li>
 
 			<li class="item-has-children">
-				<a href="#0">Stockists</a>
+				<a class="cursor">Stockists</a>
 				<ul class="sub-menu">
-					<li><a href="#0">London</a></li>
-					<li><a href="#0">New York</a></li>
-					<li><a href="#0">Milan</a></li>
-					<li><a href="#0">Paris</a></li>
+					<li><a class="cursor">London</a></li>
+					<li><a class="cursor">New York</a></li>
+					<li><a class="cursor">Milan</a></li>
+					<li><a class="cursor">Paris</a></li>
 				</ul>
 			</li>
 		</ul>
 
 		<ul class="cd-navigation cd-single-item-wrapper">
-			<li><a href="#0">Tour</a></li>
-			<li><a href="#0">Login</a></li>
-			<li><a href="#0">Register</a></li>
-			<li><a href="#0">Pricing</a></li>
-			<li><a href="#0">Support</a></li>
+			<li><a class="cursor">Tour</a></li>
+			<li><a class="cursor">Login</a></li>
+			<li><a class="cursor">Register</a></li>
+			<li><a class="cursor">Pricing</a></li>
+			<li><a class="cursor">Support</a></li>
 		</ul>
 
 		<ul class="cd-navigation cd-single-item-wrapper">
-			<li><a class="current" href="#0">Journal</a></li>
-			<li><a href="#0">FAQ</a></li>
-			<li><a href="#0">Terms &amp; Conditions</a></li>
-			<li><a href="#0">Careers</a></li>
-			<li><a href="#0">Students</a></li>
+			<li><a class="current" class="cursor">Journal</a></li>
+			<li><a class="cursor">FAQ</a></li>
+			<li><a class="cursor">Terms &amp; Conditions</a></li>
+			<li><a class="cursor">Careers</a></li>
+			<li><a class="cursor">Students</a></li>
 		</ul>
 	</nav>
 
 	<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+		<div class="cd-user-modal-container">
 			<ul class="cd-switcher">
 				<li class="angle-wrap"><span class="angle"></span></li>
 				<li>Fill out all the forms for create the event</li>
 				<li></li>
 			</ul>
 
-			<div id="cd-signup is-selected"> <!-- sign up form -->
+			<div id="cd-signup is-selected">
 				<form class="cd-form">
 					<p class="fieldset">
-						<span class="title-name">Title</span>
+						<span class="title-name">Title:</span>
 						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="">
 					</p>
 
 					<p class="fieldset">
-						<span class="title-name">Type</span>
+						<span class="title-name">About:</span>
+						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="">
+					</p>
+
+					<p class="fieldset">
+						<span class="title-name">Type:</span>
 						<select class="select-menu">
 						  <option value="football">Football</option>
 						  <option value="basketball">basketball</option>
@@ -118,18 +123,15 @@
 					</p>
 
 					<p class="fieldset">
-						<span class="title-name">About</span>
-						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="">
+						<span class="title-name time-inherit">Start Time:</span>
+						<input type="time" name="usr_time">
+						<input type="date" name="bday">
 					</p>
 
 					<p class="fieldset">
-						<span class="title-name time-inherit">Start Time</span>
-						<label class="event-time">00:00</label>
-					</p>
-
-					<p class="fieldset">
-						<span class="title-name time-inherit">End Time</span>
-						<label class="event-time">00:00</label>
+						<span class="title-name time-inherit">End Time:</span>
+						<input type="time" name="usr_time">
+						<input type="date" name="bday">
 					</p>
 
 					<p class="fieldset create-btn">
@@ -138,7 +140,7 @@
 				</form>
 
 			</div>
-			<a href="#0" class="cd-close-form">Close</a>
+			<a class="cursor" class="cd-close-form">Close</a>
 		</div>
 	</div>
 

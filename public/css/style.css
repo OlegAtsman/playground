@@ -1,5 +1,6 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto");
 input, textarea {
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-size: 1rem; }
   input::-ms-clear, textarea::-ms-clear {
@@ -73,7 +74,8 @@ input, textarea {
     .cd-user-modal-container .cd-switcher li {
       font-weight: bold;
       padding: 20px 20px 0px 20px;
-      text-align: center; }
+      text-align: center;
+      color: #000; }
   @media only screen and (min-width: 320px) {
     .cd-user-modal-container {
       margin: 4em auto; }
@@ -91,7 +93,8 @@ input, textarea {
       display: inline-block;
       vertical-align: bottom; }
     .cd-form .fieldset .select-menu {
-      width: 77%; }
+      width: 77%;
+      border-color: rgba(0, 0, 0, 0.5); }
     .cd-form .fieldset .time-inherit {
       width: inherit; }
     .cd-form .fieldset .event-time {
@@ -100,8 +103,10 @@ input, textarea {
       margin-top: 0; }
     .cd-form .fieldset:last-child {
       margin-bottom: 0; }
+    .cd-form .fieldset .time-input {
+      width: 25px; }
   .cd-form .create-btn {
-    margin-left: 20%;
+    text-align: center;
     width: 100%; }
   .cd-form label {
     font-size: 14px;
@@ -134,7 +139,7 @@ input, textarea {
       width: 77%; }
     .cd-form input.has-border {
       border: none;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.5);
       -webkit-appearance: none;
       -moz-appearance: none;
       -ms-appearance: none;
@@ -142,22 +147,19 @@ input, textarea {
       appearance: none; }
       .cd-form input.has-border:focus {
         border-color: #4e6361;
-        box-shadow: 0 0 5px rgba(78, 99, 97, 0.1);
         outline: none; }
-    .cd-form input[type=password] {
-      /* space left for the HIDE button */
-      padding-right: 65px; }
     .cd-form input[type=submit] {
       padding: 16px 0;
       cursor: pointer;
-      background: #4e6361;
+      background: #81b06c;
       color: #FFF;
       border: none;
       -webkit-appearance: none;
       -moz-appearance: none;
       -ms-appearance: none;
       -o-appearance: none;
-      appearance: none; }
+      appearance: none;
+      border-bottom: 3px solid rgba(0, 0, 0, 0.5); }
       .no-touch .cd-form input[type=submit]:hover, .no-touch .cd-form input[type=submit]:focus {
         outline: none; }
   @media only screen and (min-width: 320px) {
@@ -231,7 +233,7 @@ html, body {
 
 body {
   font-size: 100%;
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #4e6361;
   background-color: #f5f4e9; }
 
@@ -653,6 +655,7 @@ header {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   visibility: hidden;
+  display: none;
   top: 42%;
   text-align: center; }
   .more-info-container .game-type {
@@ -688,4 +691,8 @@ header {
         border-radius: 50%; }
   .more-info-container.is-visible {
     visibility: visible;
-    z-index: 999; }
+    z-index: 999;
+    display: block; }
+
+.cursor {
+  cursor: pointer; }
