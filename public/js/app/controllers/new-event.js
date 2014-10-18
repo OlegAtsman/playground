@@ -7,8 +7,10 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Mark
 
     $scope.formClass = '';
     $scope.event = {};
+    $scope.clicked = '';
 
     $scope.clickNewEvent = function() {
+        $scope.clicked = 'is-clicked';
         var map = Maps.map;
 
         google.maps.event.addListener(map, "click", function(event) {
@@ -16,6 +18,7 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Mark
             $scope.event.lon = event.latLng.lng();
             // populate yor box/field with lat, lng
             $scope.formClass = 'is-visible';
+            $scope.clicked = '';
             console.log("Lat=" + $scope.event.lat + "; Lng=" + $scope.event.lng);
         });
         //google.maps.event.clearListeners(map, "click");
