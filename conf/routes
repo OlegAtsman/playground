@@ -23,6 +23,7 @@ GET         /api/createTest        @controllers.Events.createTest
 
 GET         /api/events            @controllers.Events.list
 POST        /api/events            @controllers.Events.create
+GET         /api/event/:id         @controllers.Events.filter(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

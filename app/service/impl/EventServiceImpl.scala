@@ -28,6 +28,12 @@ class EventServiceImpl extends EventService with EventQuery {
     }
   }
 
+  override def filterByType(id: Long): Try[List[Event]] = DB.withDynTransaction {
+    Try {
+      filterByTypeQ(id).list
+    }
+  }
+
   override def createTest: Unit = DB.withDynTransaction {
 
     val startDate = new java.util.Date()
