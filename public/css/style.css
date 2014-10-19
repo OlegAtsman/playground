@@ -584,6 +584,7 @@ header {
   position: relative;
   height: 100%; }
   #cd-google-map address {
+    display: block;
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -602,6 +603,37 @@ header {
         text-align: center;
         font-weight: 500;
         font-style: normal; } }
+    #cd-google-map address.not-visible {
+      display: none; }
+    #cd-google-map address.is-visible {
+      display: block; }
+  #cd-google-map .tap {
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 1em 1em;
+    background-color: rgba(129, 176, 108, 0.8);
+    color: #fff;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    font-size: 13px;
+    font-size: 0.8125rem; }
+    @media only screen and (min-width: 768px) {
+      #cd-google-map .tap {
+        font-size: 15px;
+        font-size: 0.9375rem;
+        text-align: center;
+        font-weight: 500;
+        font-style: normal; } }
+    #cd-google-map .tap.not-come {
+      background-color: #e97357; }
+    #cd-google-map .tap.is-visible {
+      display: block; }
+    #cd-google-map .tap.not-visible {
+      display: none; }
 
 #cd-zoom-in, #cd-zoom-out {
   height: 32px;
@@ -642,9 +674,6 @@ header {
   line-height: 1.8;
   font-size: 55px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); }
-  #create-event.is-clicked {
-    background-color: red;
-    transform: rotate(45deg);}
   #create-event .plus {
     background: url("../img/plus.svg") no-repeat center center;
     width: 50px;
