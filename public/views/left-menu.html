@@ -1,10 +1,5 @@
-<nav id="cd-lateral-nav" ng-controller="LeftMenuList">
-    <ul class="cd-navigation">
-        <li class="item-has-children" ng-repeat="menu in menuList">
-            <a ng-click="categoryClick($event)">{{menu.categoryName}}</a>
-            <ul class="sub-menu">
-                <li ng-repeat="subcategory in menu.subcategories"><a>{{subcategory}}</a></li>
-            </ul>
-        </li>
+<nav id="cd-lateral-nav" ng-controller="LeftMenuCtrl">
+    <ul class="cd-navigation" ng-repeat="menu in menuList">
+        <li><a class="cursor" ng-class="'menu.clicked'">{{menu.name}}</a></li>
     </ul>
 </nav>
