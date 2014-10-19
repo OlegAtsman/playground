@@ -50,10 +50,13 @@ class EventServiceImpl extends EventService with EventQuery with UserEventQuery 
 
   override def removeUserFromEvent(eventId: Long, email: String): Try[Int] = {
     Try {
-      (for {
-        user <- users if user.email === email
-        userEvent <- userEvents if userEvent.eventId === eventId && userEvent.userId == user.id
-       } yield userEvent).delete
+      findUserEvents(eventId, email).delete
+    }
+  }
+
+  override def isIGo(eventId: Long, email: String): Try[Boolean] = DB.withDynTransaction {
+    Try {
+      findUserEvents(eventId, email).exists.run
     }
   }
 }

@@ -19,6 +19,8 @@ trait EventService {
 
   def removeUserFromEvent(eventId: Long, email: String): Try[Int]
 
+  def isIGo(eventId: Long, email: String): Try[Boolean]
+
   def createTestData
 
 }

@@ -1,20 +1,23 @@
 # Home page
-GET         /                      @controllers.Application.index
+GET         /                                 @controllers.Application.index
 
-GET         /createTestData        @controllers.Application.createTestData
+GET         /createTestData                   @controllers.Application.createTestData
 
 #Users
-POST        /api/login             @controllers.Users.login
-POST        /api/users             @controllers.Users.create
-GET         /api/users/event/:eventId @controllers.Users.findUsersWhoGoToEvent(eventId: Long)
+POST        /api/login                        @controllers.Users.login
+POST        /api/users                        @controllers.Users.create
 
-GET         /api/test              @controllers.Users.test
+GET         /api/users/event/:eventId        @controllers.Users.findUsersWhoGoToEvent(eventId: Long)
+GET         /api/events/user/:eventId         @controllers.Events.isIGo(eventId: Long)
+
+
+GET         /api/test                         @controllers.Users.test
 
 #Events
-GET         /api/events            @controllers.Events.list
-POST        /api/events            @controllers.Events.create
-GET         /api/event/:id         @controllers.Events.filter(id: Long)
+GET         /api/events                       @controllers.Events.list
+POST        /api/events                       @controllers.Events.create
+GET         /api/events/filter/:id            @controllers.Events.filter(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file          controllers.Assets.at(path="/public", file)
+GET         /assets/*file                     controllers.Assets.at(path="/public", file)

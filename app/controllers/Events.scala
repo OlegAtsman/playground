@@ -48,6 +48,14 @@ class Events @Inject()(eventService: EventService) extends Controller with Secur
     }
   }
 
+  def isIGo(eventId: Long) = withAuth { username => implicit r =>
+    val maybeBool = eventService.isIGo(eventId, username)
+    maybeBool match {
+      case Success(b) => Ok(toJson(b))
+      case Failure(e) => BadRequest(e.toString)
+    }
+  }
+
   def addUserToEvent(eventId: Long) = withAuth { username => implicit r =>
     val maybeId = eventService.addUserToEvent(eventId, username)
     maybeId match {

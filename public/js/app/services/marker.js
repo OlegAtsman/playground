@@ -43,6 +43,10 @@ angular.module("playground").factory('Marker', ['$resource', 'MarkerConfig', fun
         });
     };
 
+    module.isIgoToEvent = function(id) {
+
+    };
+
     module.clean = function() {
         for (var i = 0; i < markers.length; i++ ) {
             markers[i].setMap(null);

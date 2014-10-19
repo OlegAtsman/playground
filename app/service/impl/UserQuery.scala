@@ -37,4 +37,9 @@ trait UserQuery extends UserEventQuery {
     } yield user
   }
 
+  def findUserEvents(eventId: Long, email: String) = for {
+    user <- users if user.email === email
+    userEvent <- userEvents if userEvent.eventId === eventId && userEvent.userId == user.id
+  } yield userEvent
+
 }
