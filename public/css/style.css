@@ -300,6 +300,14 @@ header {
   transition-duration: 0.4s; }
   header a {
     cursor: pointer; }
+  header .exit {
+    background-image: url("../img/exit.svg");
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    transform: scale(0.7); }
   header .project-logo {
     color: #fff;
     font-family: 'Amatic SC', cursive;
@@ -312,7 +320,7 @@ header {
   header .logo {
     padding-top: 5px;
     position: absolute;
-    right: 20px; }
+    right: 55px; }
   header img {
     border-radius: 50%;
     width: 40px;
