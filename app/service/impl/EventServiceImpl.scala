@@ -2,7 +2,7 @@ package service.impl
 
 import java.sql.Timestamp
 
-import models.Event
+import models.{User, Event}
 import play.api.Play.current
 import play.api.db.slick.Config.driver.simple._
 import play.api.db.slick.DB
@@ -31,6 +31,12 @@ class EventServiceImpl extends EventService with EventQuery {
   override def filterByType(id: Long): Try[List[Event]] = DB.withDynTransaction {
     Try {
       filterByTypeQ(id).list
+    }
+  }
+
+  override def findUsers(eventId: Long): Try[List[User]] = DB.withDynTransaction {
+    Try {
+      findUsersWhoWillGo(eventId).list
     }
   }
 

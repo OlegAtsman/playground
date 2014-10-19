@@ -1,9 +1,10 @@
 <main class="cd-main-content" ng-click="contentWrapperClick()">
     <section id="cd-google-map" data-ng-init="initMap()">
-        <div id="google-container"></div>
+        <div id="google-container" ng-class="googleContrainerMoreInfo"></div>
         <div id="cd-zoom-in"></div>
         <div id="cd-zoom-out"></div>
+        <new-event></new-event>
         <address>86-90 Paul Street, London, EC2A 4NE</address>
     </section>
-    <new-event></new-event>
+    <more-info></more-info>
 </main>

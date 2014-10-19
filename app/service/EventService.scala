@@ -1,6 +1,6 @@
 package service
 
-import models.Event
+import models.{User, Event}
 
 import scala.util.Try
 
@@ -14,6 +14,8 @@ trait EventService {
   def list: Try[List[Event]]
 
   def filterByType(id: Long): Try[List[Event]]
+
+  def findUsers(eventId: Long): Try[List[User]]
 
   def createTest
 

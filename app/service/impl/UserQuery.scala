@@ -1,11 +1,9 @@
 package service.impl
 
-import models.{UserTable, User}
+import models.UserTable
+import play.api.db.slick.Config.driver.simple._
 
 import scala.slick.lifted.TableQuery
-import scala.util.Try
-import play.api.db.slick.Config.driver.simple._
-import play.api.db.slick._
 
 /**
  * Created by Aleh_Atsman on 10/14/2014.

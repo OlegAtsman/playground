@@ -54,4 +54,8 @@ class Events @Inject()(eventService: EventService, eventTypeService: EventTypeSe
     }
   }
 
+  /*def findUsers(eventId: Long) = Action {
+
+  }*/
+
 }
