@@ -12,7 +12,7 @@
 				<form class="login-form">
 					<h1>PlayGrounds</h1>
 					<p>
-						<label>EMail</label>
+						<label>Email</label>
 						<input type="email" ng-model="form.login" class="form-input" placeholder="">
 					</p>
 					<p>
@@ -20,7 +20,7 @@
 						<input type="text"  ng-model="form.password" class="form-input" placeholder="">
 					</p>
                     <input type="submit" ng-click="login()" class="submit-btn login-input" value="Sign in">
-		            <span class="cd-error-message not-visible">Error message here!</span> <!-- is-visible -->
+		            <span class="cd-error-message" ng-class="invalidCredentials">Error message here!</span> <!-- is-visible -->
 		        </form>
 			</div>
 		</div>
