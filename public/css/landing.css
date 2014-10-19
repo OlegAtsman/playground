@@ -1,0 +1,66 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto");
+@import url("http://fonts.googleapis.com/css?family=Amatic+SC:700");
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  height: 100%; }
+
+body {
+  font-size: 100%;
+  font-family: "Roboto", sans-serif; }
+
+.main {
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  height: 100%; }
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%; }
+
+.form-container {
+  position: absolute;
+  width: 328px;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); }
+
+.login-form {
+  color: #fff;
+  text-align: center; }
+  .login-form h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 83px; }
+  .login-form p {
+    margin-top: 20px; }
+  .login-form label {
+    width: 75px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 20px; }
+  .login-form input {
+    width: 160px; }
+  .login-form .form-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.87);
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px; }
+  .login-form .form-input:focus {
+    outline: none; }
+  .login-form input[type=submit] {
+    width: 100px;
+    height: 27px;
+    border: none;
+    background-color: #81b06c;
+    color: rgba(255, 255, 255, 0.87);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+    margin-top: 30px; }

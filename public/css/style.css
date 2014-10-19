@@ -691,6 +691,9 @@ header {
     #create-event {
       width: 100px;
       height: 100px; } }
+  #create-event.is-visible {
+    background-color: #e97357;
+    transform: rotate(45deg); }
 
 .more-info-container {
   position: absolute;
