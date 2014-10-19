@@ -16,7 +16,7 @@ class UserServiceImpl extends UserService with UserQuery with Crypt {
 
   override def save(user: User): Try[Long] = DB.withDynTransaction {
     Try {
-      val cryptUser = User(user.id, user.login, user.email, password = crypt(user.password))
+      val cryptUser = User(user.id, user.login, user.email, password = crypt(user.password), user.img)
       users returning users.map(_.id) += cryptUser
     }
   }
@@ -43,4 +43,22 @@ class UserServiceImpl extends UserService with UserQuery with Crypt {
       case Failure(e) => false
     }
   }
+
+  override def findUsersWhoGoToEvent(eventId: Long): Try[List[User]] = DB.withDynTransaction {
+    Try {
+      findUsersWhoGoToEventQ(eventId).list
+    }
+  }
+
+  override def createTestData = DB.withDynTransaction {
+    users ++= Seq(
+      User(
+        Some(0), Some("Oleg"), "olegruno@gmail.com", "1234", None
+      ),
+      User(
+        Some(0), Some("Petr"), "petr@gmail.com", "1234", None
+      )
+    )
+  }
+
 }

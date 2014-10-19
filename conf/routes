@@ -1,26 +1,16 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
-
 # Home page
 GET         /                      @controllers.Application.index
 
-# Cats
-#GET           /api/cats            @controllers.Cats.list
-#GET           /api/cats/:id        @controllers.Cats.get(id: Long)
-#POST          /api/cats            @controllers.Cats.save
-#PUT           /api/cats/:id        @controllers.Cats.update(id: Long)
-#DELETE        /api/cats/:id        @controllers.Cats.delete(id: Long)
-#GET           /api/getCat          @controllers.Cats.getCat
+GET         /createTestData        @controllers.Application.createTestData
 
 #Users
 POST        /api/login             @controllers.Users.login
 POST        /api/users             @controllers.Users.create
+GET         /api/users/event/:eventId @controllers.Users.findUsersWhoGoToEvent(eventId: Long)
 
 GET         /api/test              @controllers.Users.test
 
-GET         /api/createTest        @controllers.Events.createTest
-
+#Events
 GET         /api/events            @controllers.Events.list
 POST        /api/events            @controllers.Events.create
 GET         /api/event/:id         @controllers.Events.filter(id: Long)

@@ -2,7 +2,7 @@ package service.impl
 
 import java.sql.Timestamp
 
-import models.{User, Event}
+import models.{UserEvent, User, Event}
 import play.api.Play.current
 import play.api.db.slick.Config.driver.simple._
 import play.api.db.slick.DB
@@ -14,7 +14,7 @@ import scala.util.Try
 /**
  * Created by alehatsman on 10/18/14.
  */
-class EventServiceImpl extends EventService with EventQuery {
+class EventServiceImpl extends EventService with EventQuery with UserEventQuery with UserQuery {
 
   override def save(event: Event): Try[Long] = DB.withDynTransaction {
     Try {
@@ -34,18 +34,26 @@ class EventServiceImpl extends EventService with EventQuery {
     }
   }
 
-  override def findUsers(eventId: Long): Try[List[User]] = DB.withDynTransaction {
-    Try {
-      findUsersWhoWillGo(eventId).list
-    }
-  }
-
-  override def createTest: Unit = DB.withDynTransaction {
-
+  override def createTestData: Unit = DB.withDynTransaction {
     val startDate = new java.util.Date()
-
     events ++= Seq(
       Event(Some(1), "Imaguru", Some("Startup Club"), 1, 53.890664, 27.537312, new Timestamp(startDate.getTime), new Timestamp(startDate.getTime))
     )
+  }
+
+  override def addUserToEvent(eventId: Long, email: String): Try[Long] = DB.withDynTransaction {
+    Try {
+      val userId = findUserIdByEmailQ(email).first
+      userEvents returning userEvents.map(_.id) += new UserEvent(None, userId, eventId)
+    }
+  }
+
+  override def removeUserFromEvent(eventId: Long, email: String): Try[Int] = {
+    Try {
+      (for {
+        user <- users if user.email === email
+        userEvent <- userEvents if userEvent.eventId === eventId && userEvent.userId == user.id
+       } yield userEvent).delete
+    }
   }
 }

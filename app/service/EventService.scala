@@ -15,8 +15,10 @@ trait EventService {
 
   def filterByType(id: Long): Try[List[Event]]
 
-  def findUsers(eventId: Long): Try[List[User]]
+  def addUserToEvent(eventId: Long, email: String): Try[Long]
 
-  def createTest
+  def removeUserFromEvent(eventId: Long, email: String): Try[Int]
+
+  def createTestData
 
 }

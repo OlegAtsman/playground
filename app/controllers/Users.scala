@@ -40,6 +40,14 @@ class Users @Inject()(userService: UserService) extends Controller with Secured 
     }
   }
 
+  def findUsersWhoGoToEvent(eventId: Long) = Action {
+    val users = userService.findUsersWhoGoToEvent(eventId)
+    users match {
+      case Success(list) => Ok(toJson(list))
+      case Failure(e) => BadRequest(e.toString)
+    }
+  }
+
   def test = withAuth { username => implicit r =>
     Ok("Auth OK!")
   }
