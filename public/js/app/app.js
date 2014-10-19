@@ -11,8 +11,8 @@ angular
     ]).config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'assets/views/map.html',
-                controller: 'MapCtrl'
+                templateUrl: 'assets/views/landing.html',
+                controller: 'AuthCtrl'
             })
             .when('/home', {
                 templateUrl: 'assets/views/homeTmpl.html',
