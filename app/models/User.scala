@@ -10,14 +10,20 @@ case class User(id: Option[Long], login: Option[String], email: String, password
 
 class UserTable(tag: Tag) extends Table[User](tag, "User") {
   def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
+
   def login = column[String]("login", O.Nullable)
+
   def email = column[String]("email", O.NotNull)
+
   def password = column[String]("password", O.NotNull)
+
   def img = column[String]("img", O.Nullable)
+
   def firstname = column[String]("firstname", O.Nullable)
+
   def lastname = column[String]("lastname", O.Nullable)
 
   def idx = index("idx_email", login, unique = true)
 
-  def * = (id.?, login.?, email, password, img.?, firstname.?, lastname.?) <> (User.tupled, User.unapply)
+  def * = (id.?, login.?, email, password, img.?, firstname.?, lastname.?) <>(User.tupled, User.unapply)
 }
