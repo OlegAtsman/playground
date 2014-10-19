@@ -1,5 +1,5 @@
 <nav id="cd-lateral-nav" ng-controller="LeftMenuCtrl">
-    <ul class="cd-navigation" ng-repeat="menu in menuList">
-        <li><a class="cursor" ng-class="'menu.clicked'">{{menu.name}}</a></li>
+    <ul class="cd-navigation">
+        <li ng-repeat="menu in menuList"><a class="cursor" ng-class="menu.clicked">{{menu.name}}</a></li>
     </ul>
 </nav>
