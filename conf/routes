@@ -1,26 +1,27 @@
 # Home page
-GET         /                                   @controllers.Application.index
+GET         /                                        @controllers.Application.index
 
-GET         /createTestData                     @controllers.Application.createTestData
+GET         /createTestData                          @controllers.Application.createTestData
 
 #Users
-POST        /api/login                          @controllers.Users.login
-POST        /api/users                          @controllers.Users.create
-GET         /api/users/profile                  @controllers.Users.getUserProfile
+POST        /api/login                               @controllers.Users.login
+GET         /api/logout                              @controllers.Users.logout
+POST        /api/users                               @controllers.Users.create
+GET         /api/users/profile                       @controllers.Users.getUserProfile
 
-GET         /api/users/event/:eventId           @controllers.Users.findUsersWhoGoToEvent(eventId: Long)
-GET         /api/events/user/:eventId           @controllers.Events.isIGo(eventId: Long)
+GET         /api/users/event/:eventId                @controllers.Users.findUsersWhoGoToEvent(eventId: Long)
+GET         /api/events/user/:eventId                @controllers.Events.isIGo(eventId: Long)
 
-POST        /api/addUserToEvent/:eventId        @controllers.Events.addUserToEvent(eventId: Long)
-POST        /api/removeUserFromEvent/:eventId   @controllers.Events.removeUserFromEvent(eventId: Long)
+POST        /api/addUserToEvent/:eventId             @controllers.Events.addUserToEvent(eventId: Long)
+POST        /api/removeUserFromEvent/:eventId        @controllers.Events.removeUserFromEvent(eventId: Long)
 
-GET         /api/test                           @controllers.Users.test
+GET         /api/test                                @controllers.Users.test
 
 #Events
-GET         /api/events                         @controllers.Events.list
-POST        /api/events                         @controllers.Events.create
-GET         /api/events/filter/:id              @controllers.Events.filter(id: Long)
+GET         /api/events                              @controllers.Events.list
+POST        /api/events                              @controllers.Events.create
+GET         /api/events/filter/:id                   @controllers.Events.filter(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                       controllers.Assets.at(path="/public", file)
+GET         /assets/*file                            controllers.Assets.at(path="/public", file)

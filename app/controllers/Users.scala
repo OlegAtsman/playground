@@ -39,6 +39,9 @@ class Users @Inject()(userService: UserService) extends Controller with Secured 
       BadRequest("Invalid Json")
     }
   }
+  def logout = Action {
+    Ok.withNewSession
+  }
 
   def getUserProfile = withAuth { username => implicit r =>
     val maybeUser = userService.findByEmail(username)

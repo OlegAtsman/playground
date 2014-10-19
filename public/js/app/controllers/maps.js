@@ -30,6 +30,10 @@ angular.module('playground')
                         $scope.ifYouWillCome = 'not-visible';
                         $scope.dontCome = 'is-visible';
                     }
+                    $http.get('/api/users/event/' + $scope.event.id).
+                        success(function(data) {
+                            $scope.whoWillCome = data;
+                        });
                 }).
                 error(function(data, status, headers, config) {
                     console.log("err");
@@ -63,6 +67,12 @@ angular.module('playground')
 
             $http.get('/api/events/user/' + event.id).
                 success(function(data, status, headers, config) {
+
+                    $http.get('/api/users/event/' + event.id).
+                        success(function(data) {
+                           $scope.whoWillCome = data;
+                        });
+
                     showMoreInfo(data);
                 }).
                 error(function(data, status, headers, config) {

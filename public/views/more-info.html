@@ -5,16 +5,13 @@
         <span>{{event.description}}</span>
     </section>
     <section class="event-time-section">
-        {{event.startDate}}
-        {{event.endDate}}
-        <span>19.10.2014 <time>17:00</time></span>
-        <span>19.10.2014 <time>19:00</time></span>
+        <span>{{event.startDate}}</span>
+        <span>{{event.endDate}}</span>
     </section>
     <label>Who will come</label>
     <ul class="who-will-come">
-        <li><img src="assets/img/user.png" alt=""></li>
-        <li><img src="assets/img/user.png" alt=""></li>
-        <li><img src="assets/img/user.png" alt=""></li>
-        <li><img src="assets/img/user.png" alt=""></li>
+        <li ng-repeat="user in whoWillCome">
+            <img src="{{user.img}}" alt="{{user.firstname}}">
+        </li>
     </ul>
 </div>
