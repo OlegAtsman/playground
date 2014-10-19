@@ -1,29 +1,23 @@
 package controllers
 
-import java.sql.Timestamp
 import javax.inject.Inject
 
-import models.{JsonEvent, Event}
-import play.api.libs.json.{JsError, Json}
+import controllers.Utils._
+import models.JsonEvent
+import play.api.Logger
 import play.api.libs.json.Json._
+import play.api.libs.json.{JsError, Json}
 import play.api.mvc.{Action, Controller}
-import service.{EventTypeService, EventService}
-import Utils._
+import service.EventService
+
 import scala.util.{Failure, Success}
 
 /**
  * Created by alehatsman on 10/18/14.
  */
-class Events @Inject()(eventService: EventService, eventTypeService: EventTypeService) extends Controller{
+class Events @Inject()(eventService: EventService) extends Controller with Secured {
 
   implicit val eventFormat = Json.format[JsonEvent]
-
-  def createTest = Action {
-    eventTypeService.createTest
-    eventService.createTest
-
-    Ok("Created")
-  }
 
   def list = Action {
     val es = eventService.list
@@ -51,6 +45,22 @@ class Events @Inject()(eventService: EventService, eventTypeService: EventTypeSe
     eventList match {
       case Success(l) => Ok(toJson(eventListtojsonEventList(l)))
       case Failure(e) => BadRequest(e.toString)
+    }
+  }
+
+  def addUserToEvent(eventId: Long) = withAuth { username => implicit r =>
+    val maybeId = eventService.addUserToEvent(eventId, username)
+    maybeId match {
+      case Success(id) => Ok(id.toString)
+      case Failure(e) => Logger.info(e.toString); BadRequest(e.toString)
+    }
+  }
+
+  def removeUserFromEvent(eventId: Long) = withAuth { username => implicit r =>
+    val maybeRows = eventService.removeUserFromEvent(eventId, username)
+    maybeRows match {
+      case Success(rows) => Ok(rows.toString)
+      case Failure(e) => Logger.info(e.toString); BadRequest(e.toString)
     }
   }
 

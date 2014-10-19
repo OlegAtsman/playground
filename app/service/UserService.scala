@@ -15,4 +15,8 @@ trait UserService {
 
   def isValidCredentials(user: User): Boolean
 
+  def findUsersWhoGoToEvent(eventId: Long): Try[List[User]]
+
+  def createTestData
+
 }

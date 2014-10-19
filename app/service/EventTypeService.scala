@@ -10,5 +10,5 @@ import scala.util.Try
 trait EventTypeService {
   def save(eventType: EventType): Try[Long]
 
-  def createTest
+  def createTestData
 }

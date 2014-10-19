@@ -1,11 +1,9 @@
 package service.impl
 
-import models.EventTable
+import models.{EventTable, UserEventTable, UserTable}
+import play.api.db.slick.Config.driver.simple._
 
 import scala.slick.lifted.TableQuery
-import scala.util.Try
-import play.api.db.slick.Config.driver.simple._
-import play.api.db.slick._
 
 /**
  * Created by alehatsman on 10/18/14.

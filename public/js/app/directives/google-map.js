@@ -6,6 +6,7 @@
 angular.module('playground').directive('googleMap', function() {
     return {
         restrict: 'E',
-        templateUrl: 'assets/views/map.html'
+        templateUrl: 'assets/views/map.html',
+        controller: 'MapCtrl'
     };
 });

@@ -3,7 +3,8 @@
  */
 'use strict';
 
-angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Marker', function($scope, Maps, Marker) {
+angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Marker',
+    function($scope, Maps, Marker) {
 
     $scope.formClass = '';
     $scope.event = {};
@@ -18,7 +19,6 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Mark
             $scope.event.lon = event.latLng.lng();
             // populate yor box/field with lat, lng
             $scope.formClass = 'is-visible';
-            $scope.clicked = '';
             console.log("Lat=" + $scope.event.lat + "; Lng=" + $scope.event.lng);
             google.maps.event.clearListeners(map, "click");
         });
@@ -28,6 +28,7 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Mark
     $scope.closeForm = function(event) {
         if( $(event.target).is($('.cd-user-modal')) || $(event.target).is('.cd-close-form') ) {
             $scope.formClass='';
+            $scope.clicked = '';
         }
     };
 
@@ -36,5 +37,6 @@ angular.module('playground').controller('NewEventCtrl', ['$scope', 'Maps', 'Mark
         $scope.event.eventTypeId = parseInt($scope.event.eventTypeId);
         Marker.postNewMarker($scope.event, Maps.map);
         $scope.formClass='';
+        $scope.clicked = '';
     };
 }]);

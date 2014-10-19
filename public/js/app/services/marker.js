@@ -6,18 +6,24 @@
 angular.module("playground").factory('Marker', ['$resource', 'MarkerConfig', function($resource, MarkerConfig) {
     var Marker = $resource('/api/events/:id', {id:'@id'});
     var module = {};
+    var markers = [];
     var events = [];
-    module.loadAndAddAllMarkers = function(map) {
-        Marker.query(function(markers) {
-            markers.forEach(function(m) {
+
+    module.loadAndAddAllMarkers = function(map, markerOnClick) {
+        Marker.query(function(jsonEvents) {
+            jsonEvents.forEach(function(event) {
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(m.lat, m.lon),
+                    position: new google.maps.LatLng(event.lat, event.lon),
                     map: map,
-                    title: m.title,
+                    title: event.title,
                     visible: true,
                     icon: MarkerConfig.getIconStyle()
                 });
-                events.push(marker);
+                google.maps.event.addListener(marker, 'click', function() {
+                    markerOnClick(marker, event);
+                });
+                markers.push(marker);
+                events.push(event);
             });
         });
     };
@@ -31,11 +37,17 @@ angular.module("playground").factory('Marker', ['$resource', 'MarkerConfig', fun
         });
     };
 
+    module.cleanListeners = function() {
+        markers.forEach(function(marker) {
+            google.maps.event.clearListeners(marker, "click");
+        });
+    };
+
     module.clean = function() {
-        for (var i = 0; i < events.length; i++ ) {
-            events[i].setMap(null);
+        for (var i = 0; i < markers.length; i++ ) {
+            markers[i].setMap(null);
         }
-        events.length = 0;
+        markers.length = 0;
     };
 
     return module;

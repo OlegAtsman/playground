@@ -21,7 +21,7 @@ class EventTypeServiceImpl extends EventTypeService with EventTypeQuery {
     }
   }
 
-  def createTest = DB.withDynTransaction {
+  def createTestData = DB.withDynTransaction {
     eventTypes ++= Seq(
       EventType(Some(0), "Place"),
       EventType(Some(1), "Football")
