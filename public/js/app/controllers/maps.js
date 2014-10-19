@@ -13,17 +13,27 @@ angular.module('playground')
         $scope.isVisibleMoreIfno = '';
         $scope.googleContrainerMoreInfo = '';
         $scope.event = {};
+        $scope.isVisible = '';
+        $scope.footerVisible = '';
+        $scope.notVisible = '';
 
         globalCallbackHach = function(marker, event) {
 
             function showMoreInfo() {
                 $scope.isVisibleMoreIfno = 'is-visible';
                 $scope.googleContrainerMoreInfo = 'more-info';
+                $scope.footerVisible = 'not-visible';
+
+                $scope.notVisible = 'is-visible';
+                $scope.isVisible = 'not-visible';
             }
 
             function hideMoreInfo() {
                 $scope.isVisibleMoreIfno = '';
                 $scope.googleContrainerMoreInfo = '';
+                $scope.notVisible = 'not-visible';
+                $scope.isVisible = 'not-visible';
+                $scope.footerVisible = 'is-visible';
             }
 
             $scope.event = event;
@@ -33,6 +43,7 @@ angular.module('playground')
                 google.maps.event.clearListeners(map, "click");
                 newEventButton.doGreen();
             });
+
         };
 
         $scope.initMap = function() {
