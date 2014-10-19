@@ -31,13 +31,6 @@ angular.module("playground").factory('Maps', ['MapsConfig', 'MarkerConfig', func
 
         map.center = currentPosition;
 
-        var marker = new google.maps.Marker({
-            position: map.center,
-            map: map,
-            visible: true,
-            icon: markerIconUrl
-        });
-
         //add custom buttons for the zoom-in/zoom-out on the map
         function CustomZoomControl(controlDiv, map) {
             //grap the zoom elements from the DOM and insert them in the map
