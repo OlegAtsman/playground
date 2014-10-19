@@ -691,7 +691,7 @@ header {
     #create-event {
       width: 100px;
       height: 100px; } }
-  #create-event.is-visible {
+  #create-event.is-clicked {
     background-color: #e97357;
     transform: rotate(45deg); }
 
