@@ -7,37 +7,67 @@ var globalCallbackHach = '';
 'use strict';
 
 angular.module('playground')
-    .controller('MapCtrl', ['$scope', '$routeParams', 'Maps', 'JqueryTrash', 'Marker', 'NewEventButton',
-        function($scope, $routeParams, Maps, JqueryTrash, Marker, newEventButton) {
+    .controller('MapCtrl', ['$scope', '$routeParams', 'Maps', 'JqueryTrash', 'Marker', 'NewEventButton', '$http',
+        function($scope, $routeParams, Maps, JqueryTrash, Marker, newEventButton, $http) {
 
         $scope.isVisibleMoreIfno = '';
         $scope.googleContrainerMoreInfo = '';
         $scope.event = {};
-        $scope.isVisible = '';
+        $scope.dontCome = '';
         $scope.footerVisible = '';
-        $scope.notVisible = '';
+        $scope.ifYouWillCome = '';
+
+        var showMoreInfo = '';
+        var hideMoreInfo = '';
+
+        function checkRightButton() {
+            $http.get('/api/events/user/' + $scope.event.id).
+                success(function(data, status, headers, config) {
+                    if(!data) {
+                        $scope.ifYouWillCome = 'is-visible';
+                        $scope.dontCome = 'not-visible';
+                    } else {
+                        $scope.ifYouWillCome = 'not-visible';
+                        $scope.dontCome = 'is-visible';
+                    }
+                }).
+                error(function(data, status, headers, config) {
+                    console.log("err");
+                });
+        }
 
         globalCallbackHach = function(marker, event) {
 
-            function showMoreInfo() {
+            showMoreInfo = function showMoreInfo(isIgo) {
                 $scope.isVisibleMoreIfno = 'is-visible';
                 $scope.googleContrainerMoreInfo = 'more-info';
                 $scope.footerVisible = 'not-visible';
-
-                $scope.notVisible = 'is-visible';
-                $scope.isVisible = 'not-visible';
+                if(!isIgo) {
+                    $scope.ifYouWillCome = 'is-visible';
+                    $scope.dontCome = 'not-visible';
+                } else {
+                    $scope.ifYouWillCome = 'not-visible';
+                    $scope.dontCome = 'is-visible';
+                }
             }
 
-            function hideMoreInfo() {
+            hideMoreInfo = function hideMoreInfo() {
                 $scope.isVisibleMoreIfno = '';
                 $scope.googleContrainerMoreInfo = '';
-                $scope.notVisible = 'not-visible';
-                $scope.isVisible = 'not-visible';
+                $scope.ifYouWillCome = 'not-visible';
+                $scope.dontCome = 'not-visible';
                 $scope.footerVisible = 'is-visible';
             }
 
             $scope.event = event;
-            showMoreInfo();
+
+            $http.get('/api/events/user/' + event.id).
+                success(function(data, status, headers, config) {
+                    showMoreInfo(data);
+                }).
+                error(function(data, status, headers, config) {
+                    console.log("err");
+                });
             google.maps.event.addListener(Maps.map, 'click', function() {
                 hideMoreInfo();
                 google.maps.event.clearListeners(map, "click");
@@ -54,4 +84,17 @@ angular.module('playground')
         $scope.contentWrapperClick = function() {
             JqueryTrash.contentWrapperClick();
         };
+
+        $scope.iWillCome = function() {
+            $http.post('/api/addUserToEvent/' + $scope.event.id).success(function() {
+                checkRightButton();
+            });
+        };
+
+        $scope.iDontCome = function() {
+            $http.post('/api/removeUserFromEvent/' + $scope.event.id).success(function() {
+                checkRightButton();
+            });
+        }
+
     }]);
