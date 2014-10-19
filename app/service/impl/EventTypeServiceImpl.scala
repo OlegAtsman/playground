@@ -26,7 +26,9 @@ class EventTypeServiceImpl extends EventTypeService with EventTypeQuery {
       EventType(Some(0), "Place"),
       EventType(Some(1), "Football"),
       EventType(Some(2), "Basketball"),
-      EventType(Some(3), "Hackathon")
+      EventType(Some(3), "Volleyball"),
+      EventType(Some(4), "Rugby"),
+      EventType(Some(5), "Hackathon")
     )
   }
 

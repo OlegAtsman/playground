@@ -17,7 +17,7 @@ angular.module("playground").factory('Marker', ['$resource', 'MarkerConfig', fun
                     map: map,
                     title: event.title,
                     visible: true,
-                    icon: MarkerConfig.getIconStyle()
+                    icon: MarkerConfig.getIconStyle(event.eventTypeId)
                 });
                 google.maps.event.addListener(marker, 'click', function() {
                     markerOnClick(marker, event);
