@@ -5,22 +5,23 @@
 	<title>LogIn</title>
 	<link rel="stylesheet" href="css/landing.css">
 </head>
-<body ng-controller="AuthCtrl">
+<body>
+
 	<div class="main">
 		<div class="overlay">
 			<div class="form-container">
 				<form class="login-form">
 					<h1>PlayGrounds</h1>
 					<p>
-						<label>Email</label>
-						<input type="email" ng-model="form.login" class="form-input" placeholder="">
+						<label>EMail</label>
+						<input type="email" class="form-input" placeholder="">
 					</p>
 					<p>
 						<label>Password</label>
-						<input type="text"  ng-model="form.password" class="form-input" placeholder="">
+						<input type="password" class="form-input" placeholder="">
 					</p>
-                    <input type="submit" ng-click="login()" class="submit-btn login-input" value="Sign in">
-		            <span class="cd-error-message" ng-class="invalidCredentials">Error message here!</span> <!-- is-visible -->
+		            <input type="submit" class="submit-btn login-input" value="Sign in">
+		            <span class="cd-error-message">Error message here!</span> <!-- is-visible -->
 		        </form>
 			</div>
 		</div>

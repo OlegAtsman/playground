@@ -710,10 +710,7 @@ header {
   visibility: hidden;
   display: none;
   top: 42%;
-  text-align: center;
-  -webkit-transition: 1s;
-  -moz-transition: 1s;
-  transition: 1s; }
+  text-align: center; }
   .more-info-container .game-type {
     margin-top: 10px;
     text-align: center;
