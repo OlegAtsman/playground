@@ -39,7 +39,9 @@ angular.module('playground').controller('TopMenuCtrl', ['$scope', 'JqueryTrash',
     };
 
     $scope.logout = function() {
-        changeLocation("/#/");
+        $http.get('/api/logout').success(function() {
+            changeLocation("/#/");
+        });
     };
 
 }]);
