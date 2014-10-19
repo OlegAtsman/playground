@@ -7,7 +7,7 @@ import models.JsonEvent
 import play.api.Logger
 import play.api.libs.json.Json._
 import play.api.libs.json.{JsError, Json}
-import play.api.mvc.{Action, Controller}
+import play.api.mvc.{Security, Action, Controller}
 import service.EventService
 
 import scala.util.{Failure, Success}
@@ -29,9 +29,13 @@ class Events @Inject()(eventService: EventService) extends Controller with Secur
 
   def create = Action(parse.json) { implicit request =>
     request.body.validate[JsonEvent].map { event =>
+      val username = request.session(Security.username)
       val maybeId = eventService.save(event)
       maybeId match {
-        case Success(id) => Ok(toJson(id))
+        case Success(id) => {
+          eventService.addUserToEvent(id, username)
+          Ok(toJson(id))
+        }
         case Failure(e) => BadRequest("Can not save event" + e.toString)
       }
     }.recoverTotal{
