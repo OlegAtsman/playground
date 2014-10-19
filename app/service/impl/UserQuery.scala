@@ -1,6 +1,7 @@
 package service.impl
 
 import models.UserTable
+import play.api.Logger
 import play.api.db.slick.Config.driver.simple._
 
 import scala.slick.lifted.TableQuery
@@ -36,10 +37,4 @@ trait UserQuery extends UserEventQuery {
       user <- users if user.id === userEvent.userId
     } yield user
   }
-
-  def findUserEvents(eventId: Long, email: String) = for {
-    user <- users if user.email === email
-    userEvent <- userEvents if userEvent.eventId === eventId && userEvent.userId == user.id
-  } yield userEvent
-
 }
