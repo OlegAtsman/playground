@@ -52,13 +52,17 @@ class UserServiceImpl extends UserService with UserQuery with Crypt {
 
   override def createTestData = DB.withDynTransaction {
     users ++= Seq(
-      User(
+      userToCryptUser(User(
         Some(0), Some("Oleg"), "olegruno@gmail.com", "1234", None
-      ),
-      User(
-        Some(0), Some("Petr"), "petr@gmail.com", "1234", None
-      )
+      )),
+      userToCryptUser(User(
+        Some(1), Some("Petr"), "petr@gmail.com", "1234", None
+      ))
     )
+  }
+
+  def userToCryptUser(user: User) = {
+    User(user.id, user.login, user.email, password = crypt(user.password), user.img)
   }
 
 }

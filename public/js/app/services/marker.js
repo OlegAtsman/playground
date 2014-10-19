@@ -33,7 +33,7 @@ angular.module("playground").factory('Marker', ['$resource', 'MarkerConfig', fun
         event.$save(function(u, putResponseHeaders) {
             console.log(u);
             module.clean();
-            module.loadAndAddAllMarkers(map);
+            module.loadAndAddAllMarkers(map, globalCallbackHach);
         });
     };
 
